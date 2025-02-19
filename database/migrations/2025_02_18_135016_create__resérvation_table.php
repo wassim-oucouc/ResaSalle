@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('client_id');
             $table->foreign('salle_id')->references('id')->on('salle');
             $table->foreign('client_id')->references('id')->on('utilisateur');
+            $table->date('reservation_date');
+            $table->time('reservation_time');
             $table->timestamp('Date_Creation');
             $table->String('Type');
         });

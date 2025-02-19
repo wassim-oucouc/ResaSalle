@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Password');
             $table->string('Role');
             $table->string('Status');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('utilisateur');
+        //
     }
 };
