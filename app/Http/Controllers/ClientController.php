@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\salle;
 use App\Models\resérvation;
-
+use App\Models\utilisateur;
 class ClientController extends Controller
 {
     public function index()
@@ -63,8 +63,22 @@ class ClientController extends Controller
         }
 
     }
-    public function reservationlist()
+
+    public function RenderReservation()
     {
-        return view('reservationlist');
+        $reservation = utilisateur::find(2);
+       $allreservation =  $reservation->reservation()->with('salle')->get();
+    //    dd($allreservation);
+        return view('reservationlist',compact('allreservation'));
     }
+    public function ReservationCancel(Request $request)
+    {
+        $id_reservation = $request['id'];
+        $reservation = resérvation::find($id_reservation);
+        $reservation->status = "Annulé";
+        $reservation->save();
+        return redirect('reservation/list');
+
+    }
+
 }

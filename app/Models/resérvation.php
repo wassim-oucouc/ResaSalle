@@ -14,7 +14,7 @@ class resérvation extends Model
 
     public function salle()
     {
-        return $this->hasMany(salle::class);
+        return $this->belongsTo(salle::class,'salle_id');
     }
 
     public function utilisateur()

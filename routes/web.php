@@ -37,7 +37,9 @@ Route::get('/salles/home',[ClientController::class,'SalleRender']);
 Route::get('/confirmation/reservation/{id}',[ClientController::class,'CheckoutReservation']);
 Route::post('/confirmation/reservation/{id}',[ClientController::class,'CheckoutreservationSend']);
 
-Route::get('/reservation/list',[ClientController::class,'reservationlist']);
+Route::get('/reservation/list',[ClientController::class,'RenderReservation']);
+
+Route::get('/reservation/cancel/{id}',[ClientController::class,'ReservationCancel']);
 
 Route::get('/confirmation', function (){
     return view('/ConfirmationRéservation');
